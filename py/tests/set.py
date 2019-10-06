@@ -72,4 +72,23 @@ assert "t" in b
 assert 4 in c
 assert 5 in c
 
+doc="add"
+a = set()
+a.add(1)
+a.add(2)
+a.add(3)
+assert len(a) == 3
+assert 1 in a
+assert 2 in a
+assert 3 in a
+
+b = set()
+b.add(1)
+b.add(1)
+b.add('a')
+b.add('a')
+assert len (b) == 2
+assert 1 in b
+assert 'a' in b
+
 doc="finished"

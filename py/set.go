@@ -16,6 +16,17 @@ type Set struct {
 	items map[Object]SetValue
 }
 
+func init() {
+	SetType.Dict["add"] = MustNewMethod("add", func(self Object, args Tuple) (Object, error) {
+		setSelf := self.(*Set)
+		if len(args) != 1 {
+			return nil, ExceptionNewf(TypeError, "add() takes exactly one argument (%d given)", len(args))
+		}
+		setSelf.items[args[0]] = SetValue{}
+		return NoneType{}, nil
+	}, 0, "add(item)")
+}
+
 // Type of this Set object
 func (o *Set) Type() *Type {
 	return SetType
